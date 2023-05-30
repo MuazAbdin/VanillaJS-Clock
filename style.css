@@ -1,0 +1,182 @@
+@import url('https://fonts.cdnfonts.com/css/alarm-clock');
+@import url('https://fonts.googleapis.com/css?family=Sigmar&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Instrument Serif&display=swap');
+
+* {
+    margin: 0; padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+
+    background-color: rgb(127, 170, 108);
+}
+
+h1 {
+    font-family: 'Sigmar';
+    font-size: 5em;
+    font-weight: normal;
+    color: rgb(251, 171, 59);
+    text-shadow: 0px 0px 8px #072b9f;
+    margin: 0; padding: 0;
+}
+
+header h4 {
+    font-family: 'Instrument Serif';
+    font-size: 1.5em; font-weight: bolder;
+    margin: 0; padding: 0;
+}
+
+#clock {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 25px;
+}
+
+#clock .analog {
+    border: 4px solid black;
+    background-color: white;
+    height: 400px; width: 400px;
+    border-radius: 50%;
+    font-size: 3em;
+    position: relative;
+}
+
+#clock .analog .centre {
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: black;
+    height: 20px; width: 20px;
+    border-radius: 50%;
+    z-index: 11;
+}
+
+#clock .analog .hand {
+    position: absolute;
+    bottom: 50%; left: 50%;
+    border-radius: 10px;
+    transform-origin: bottom;
+    z-index: 10;
+    transform: translateX(-50%);
+}
+
+#clock .hand.secs {
+    width: 3px;
+    height: 45%;
+    background-color: red;
+    z-index: 12;
+}
+
+#clock .hand.mins {
+    width: 7px;
+    height: 40%;
+    background-color: black;
+}
+
+#clock .hand.hrs {
+    width: 10px;
+    height: 35%;
+    background-color: black;
+}
+
+#clock .analog span {
+    /* background-color: rgba(188, 143, 143, 0.5); */
+    position: absolute;
+    height: 100%; width: 100%;
+    font-family: Tahoma, sans-serif;
+    font-size: .75em;
+    text-align: center;
+    transform: translateX(-50%)
+               rotate(calc(30deg * var(--i)));
+}
+
+#clock .analog span b {
+    position: absolute;
+    height: 1.2em; width: 1.2em;
+    text-align: center;
+    font-family: 'Instrument Serif';
+    font-size: 1.5em;
+
+    border-radius: 50%;
+    box-shadow: 5px 5px 70px rgba(0, 0, 0, .25),
+                inset 5px 5px 5px rgb(220, 219, 219),
+                inset 5px -5px 5px rgb(220, 219, 219),
+                inset -5px 5px 5px rgb(220, 219, 219),
+                inset -5px -5px 5px rgb(220, 219, 219);
+
+    transform: translateX(-50%)
+               rotate(calc(-30deg * var(--i)));
+}
+
+#clock .digital{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: 10px;
+    padding: .25em .25em;
+
+    border: 2px dashed rgb(0, 0, 0);
+    background-color: rgb(110, 110, 110);
+    border-radius: 10px;
+    font-size: 3em;
+}
+
+#clock .digital span {
+    padding: 0.1em .2em;
+    background-color: rgb(175, 175, 175);
+    border-radius: 10px;
+
+    font-family: 'alarm clock', sans-serif;
+    font-weight: bold;
+    color: brown;
+}
+
+.hours_container, .minutes_container {
+    display: flex;
+    position: relative;
+}
+
+.digital .hours, .digital .minutes {
+    height: 50px; width: 60px;
+    text-align: end;
+}
+
+.bg_digit {
+    background: transparent;
+    position: absolute;
+    opacity: 0.1;
+    height: 50px; width: 60px;
+    text-align: end;
+    font-weight: normal;
+}
+
+#clock .digital .colon {
+    background-color: inherit;
+    color: wheat;
+    text-shadow: 0px 0px 5px brown;
+    animation: animate 1s steps(1) infinite;
+}
+
+@keyframes animate {
+    0% { opacity: 1; }
+    50% { opacity: 0; }
+}
+
+#clock .digital .AM_PM {
+    background-color: inherit;
+    font-family: Tahoma, sans-serif;
+    font-size: .5em;
+    color: wheat;
+    text-shadow: 0px 0px 5px brown;
+    margin-left: .5em;
+    align-self: baseline;
+}
